@@ -1,0 +1,28 @@
+version: '2'
+services:
+  hfjrss:
+    container_name: hfjrss
+    build: .
+    ports:
+      - "80"
+    environment:
+      - VIRTUAL_HOST=hfjrss.docker
+    depends_on:
+      - memcached
+    volumes:
+      - ./:/var/www/
+      - ./app/dist/:/var/www/html/app/:ro
+      - "/etc/localtime:/etc/localtime:ro"
+  
+  webpack:
+    build:
+      context: ./webpack
+    image: reactjs_webpack
+    container_name: reactjs_webpack_container
+    volumes:
+      - ./app/src:/app/src:ro
+      - ./app/dist:/app/dist:z
+
+  memcached:
+    image: memcached
+

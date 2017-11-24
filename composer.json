@@ -1,0 +1,28 @@
+{
+	"name" : "hfj/hoge",
+	"autoload" : {
+	     "psr-4" : {
+	          "UnitTest\\Sample\\" : "src/",
+			  "cli\\": "cli",
+			  "App\\": "app"	     
+		}
+	},
+	"repositories": [
+		{
+		  "type": "vcs",
+		  "url": "https://github.com/mibe/FeedWriter"
+		}
+	  ],
+		
+	"require" : {
+		"symfony/console": "^3.0",
+		"guzzlehttp/guzzle": "^6.2",
+		"mibe/FeedWriter": "*"
+	} ,
+	"require-dev" : {
+		"codeception/codeception" : "2.3",
+ 		"codeception/specify": "*",
+    	"codeception/verify": "*",
+		"squizlabs/php_codesniffer": "3.*"   
+	}
+}
