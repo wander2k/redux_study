@@ -1,12 +1,12 @@
 version: '2'
 services:
-  hfjrss:
-    container_name: hfjrss
+  redux:
+    container_name: redux
     build: .
     ports:
       - "80"
     environment:
-      - VIRTUAL_HOST=hfjrss.docker
+      - VIRTUAL_HOST=redux.docker
     depends_on:
       - memcached
     volumes:
