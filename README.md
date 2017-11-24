@@ -1,4 +1,4 @@
-# hfj rss export from rover
+# Reactjs + Redux study sample
 
 Only support MAC!!!
 
