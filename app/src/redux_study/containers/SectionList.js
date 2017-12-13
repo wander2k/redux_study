@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
  }
 
 let Sources = ( props ) => {
+    console.log(props)
     let input
 
     return (

@@ -30,4 +30,4 @@ let FeedList = connect(
 )(Feeds)
 
 
-export default FeedList
+export default FeedList 
