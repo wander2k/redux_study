@@ -2,9 +2,6 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    bundle: './src/app.js',
-    reduxsample: './src/redux-sample.js',
-    todos : './src/reduxTodos/index.js',
     rssexportermui : './src/rss_exporter_mui/index.js'
   },
   output: {

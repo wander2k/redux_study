@@ -3,6 +3,9 @@ FROM node:7.9.0
 WORKDIR /app
 COPY ./webpack.config.js /app/webpack.config.js
 
+RUN apt-get update && apt-get install -my wget gnupg
+RUN apt-get install -y gnupg2
+
 RUN npm init -y
 RUN npm install -g webpack
 RUN npm install --save react react-dom
