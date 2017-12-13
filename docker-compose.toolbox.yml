@@ -1,0 +1,27 @@
+version: '2'
+services:
+  redux:
+    container_name: redux
+    build: .
+    ports:
+      - 8080:80
+    environment:
+      - VIRTUAL_HOST=redux.docker
+    depends_on:
+      - memcached
+    volumes:
+      - /srv/docker/redux_study/:/var/www/
+      - /srv/docker/redux_study/app/dist/:/var/www/html/app/:ro
+  
+  webpack:
+    build:
+      context: ./webpack
+    image: reactjs_webpack
+    container_name: reactjs_webpack_container
+    volumes:
+      - /srv/docker/redux_study/app/src:/app/src:ro
+      - /srv/docker/redux_study/app/dist:/app/dist:z
+
+  memcached:
+    image: memcached
+
