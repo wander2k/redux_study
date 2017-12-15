@@ -6,7 +6,6 @@ import FeedList from './FeedList'
 const App = () => (
   <div>
     <AddFeed />
-    <SectionList />
     <hr/>
     <div><b>The feed list:</b></div>
     <FeedList />

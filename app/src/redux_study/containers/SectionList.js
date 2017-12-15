@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
      }
  }
 
-let Sources = ( props ) => {
+let SectionList = ( props ) => {
     console.log(props)
     let input
 
@@ -24,15 +24,15 @@ let Sources = ( props ) => {
         <div>
             <ul>
             {props.sources.map(source => 
-                <Section key={source.id} name={source.name}/>
+                <Section key={source.id} source={source}/>
             )}
             </ul>
         </div>
     )
 }
-let SectionList = connect(
+SectionList = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Sources)
+)(SectionList)
 
 export default SectionList
