@@ -13,6 +13,7 @@ let AddFeed = ({ sources, dispatch }) => {
         <div>
             <form
                 onSubmit={e => {
+                    console.log("****Container:AddFeed:onSubmit triggered*****")
                     console.log(input.value)
                     console.log(selectedSource.value)
                     console.log(sources.find(element => element.id == selectedSource.value))
@@ -20,7 +21,7 @@ let AddFeed = ({ sources, dispatch }) => {
                     if (!input.value.trim()) {
                         return
                     };
-                    dispatch(addFeed(input.value))
+                    dispatch(addFeed(input.value, sources.find(element => element.id == selectedSource.value)))
                     input.value = ''
                 }}
             >
