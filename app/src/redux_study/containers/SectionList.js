@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button,FormGroup,FormControl,ControlLabel } from 'react-bootstrap'
+import { InputGroup, Radio } from 'react-bootstrap'
 import Section from '../components/Section'
 //import { addTodo } from '../actions'
 
@@ -16,18 +16,22 @@ const mapStateToProps = (state, ownProps) => {
      }
  }
 
+ function validateRadio(value) {
+    if(!value) {
+      return 'You need to check this value'
+    }
+ }
+
 let SectionList = ( props ) => {
     console.log(props)
     let input
 
     return (
-        <div>
-            <ul>
+        <InputGroup>
             {props.sources.map(source => 
-                <Section key={source.id} source={source}/>
+                <Radio inline key={source.id} name="selectedSection" value={source.id} onChange={props.onChangeValue}>{source.name}</Radio>
             )}
-            </ul>
-        </div>
+        </InputGroup>
     )
 }
 SectionList = connect(

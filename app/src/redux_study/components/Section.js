@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTyps from 'prop-types'
 import { connect } from 'react-redux'
+import { Radio  } from 'react-bootstrap'
 
 
 let Section = ({source}) => {
     console.log(source)
     return (
-        <li key={source.id}><input type="radio" name="selectedSection" value={source.id}/>{source.name}</li>
+        <Radio inline name="selectedSection" value={source.id}>{source.name}</Radio>
     )
 }
 

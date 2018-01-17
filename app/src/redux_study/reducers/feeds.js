@@ -6,7 +6,7 @@ const feeds = (state = [], action) => {
         ...state,
         {
           id: action.id,
-          name: action.text + " : " + action.source.name
+          name: action.text + " : " + action.source
         }
       ]
 

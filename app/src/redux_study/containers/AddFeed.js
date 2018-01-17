@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button,FormGroup,FormControl,ControlLabel } from 'react-bootstrap'
+import { Form, Button,FormGroup,FormControl,ControlLabel } from 'react-bootstrap'
 import { addFeed } from '../actions'
 import SectionList from './SectionList'
 
@@ -9,27 +9,33 @@ let AddFeed = ({ sources, dispatch }) => {
     let input
     let selectedSource
 
+    let handleChangeValue = e => { 
+        console.log(e.target.value);
+        selectedSource = sources.find(element => element.id == e.target.value);
+        console.log(selectedSource);
+    }
+
     return (
         <div>
-            <form
+            <Form inline
                 onSubmit={e => {
+                    e.preventDefault()
                     console.log("****Container:AddFeed:onSubmit triggered*****")
                     console.log(input.value)
-                    console.log(selectedSource.value)
-                    console.log(sources.find(element => element.id == selectedSource.value))
-                    e.preventDefault()
+                    console.log(selectedSource)
+                    // console.log(sources.find(element => element.id == selectedSource.value))
                     if (!input.value.trim()) {
                         return
                     };
-                    dispatch(addFeed(input.value, sources.find(element => element.id == selectedSource.value)))
+                    dispatch(addFeed(input.value, selectedSource.name))
                     input.value = ''
                 }}
             >
                 <FormGroup>
                     <ControlLabel>タイトル</ControlLabel>
-                    <input
+                    <FormControl
                         type="text"
-                        ref={node => {
+                        inputRef ={node => {
                             input = node
                         }}
                     />
@@ -37,18 +43,10 @@ let AddFeed = ({ sources, dispatch }) => {
                         Save
                     </Button>
                 </FormGroup>
-            </form>
-            <div>
-                <ul>                    
-                    {sources.map(source => 
-                        <li key={source.id}><input type="radio" name="selectedSection" 
-                        value={source.id} 
-                        ref={node => {
-                            selectedSource = node 
-                        }}/>{source.name}</li>
-                    )}
-                </ul>
-            </div>
+                <FormGroup>
+                    <SectionList onChangeValue={handleChangeValue}/>
+                </FormGroup>
+            </Form>
         </div>
     )
 }
