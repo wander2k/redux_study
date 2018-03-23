@@ -1,1 +1,2 @@
-vender/
+/vender/
+/app/dist/redux_study.js
