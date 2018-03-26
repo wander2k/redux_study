@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -my wget gnupg
 RUN apt-get install -y gnupg2
 
 RUN npm init -y
-RUN npm install -g webpack
+RUN npm install -g webpack@3.11.0
 RUN npm install --save react react-dom
 RUN npm install --save react react-bootstrap
 RUN npm install --save redux react-redux
